@@ -14,7 +14,9 @@
   "scripts": {
     "build": "parcel build ./src/index.ts --no-source-maps --target=node --bundle-node-modules",
     "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
@@ -39,12 +41,14 @@
     "remark-stringify": "^7.0.3",
     "resolve-from": "^5.0.0",
     "semver": "^6.3.0",
-    "unified": "^8.3.2"
+    "unified": "^8.3.2",
+    "@snyk/protect": "latest"
   },
   "husky": {
     "hooks": {
       "pre-commit": "yarn build && git add dist/index.js"
     }
   },
-  "prettier": {}
+  "prettier": {},
+  "snyk": true
 }
